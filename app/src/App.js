@@ -1,7 +1,6 @@
 import './App.css';
 
-import { useState } from "react";
-import FileForm from './components/FileForm';
+import FileForm from './components/FileForm/FileForm';
 
 function App() {
  

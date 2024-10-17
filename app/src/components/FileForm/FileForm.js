@@ -35,11 +35,11 @@ function FileForm() {
 
 
     return (
-        <div>
+        <div className="fileloader">
             <h1>Upload file</h1>
 
             <form onSubmit={handleSubmit}>
-                <div style={{marginBottom: "20px"}}>
+                <div>
                     <input type="file" onChange={handleFileInputChange}/>
                 </div>
 
