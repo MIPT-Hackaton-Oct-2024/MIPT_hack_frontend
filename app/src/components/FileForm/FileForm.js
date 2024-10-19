@@ -33,6 +33,19 @@ function FileForm() {
         }
     }
 
+    const handleClick = async (e) => {
+        try {
+            const endpoint = "/test_predict/";
+            await fetch(endpoint)
+                .then((response) => response.json())
+                .then((data) => {document.getElementById("test").innerHTML = data; console.log(data)});
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
+
 
     return (
         <div className="fileloader">
@@ -44,9 +57,13 @@ function FileForm() {
                 </div>
 
                 <button type="submit">Upload file</button>
+
             </form>
 
+            <button onClick={handleClick}>Get predict</button>
+
             {file && <p>{file.name}</p>}
+            <div id="test"></div>
         </div>
     );
 }
