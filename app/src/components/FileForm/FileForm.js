@@ -57,7 +57,6 @@ function FileForm() {
                 </div>
 
                 <button type="submit">Upload file</button>
-
             </form>
 
             <button onClick={handleClick}>Get predict</button>
