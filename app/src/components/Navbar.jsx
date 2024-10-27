@@ -15,9 +15,7 @@ function Navbar() {
             </label>
             <ul className = 'menu'>
                 <li>
-                    {/* <NavLink to ='/'>
-                    
-                    </NavLink> */}
+                    {/* <NavLink to ='/'> Данные </NavLink> */}
                     <a href='#' >Данные</a>
                 </li>    
                 <li><a href='#'>Кластеризация</a></li>

@@ -3,6 +3,10 @@ import Navbar from './Navbar';
 
 
 function Header() {
+const handleFileSubmit=(e)=>{
+    e.preventDefault();
+}
+
     return (
         <div className='header'>
             <Navbar/>
