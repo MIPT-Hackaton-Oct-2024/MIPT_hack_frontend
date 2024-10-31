@@ -20,6 +20,8 @@ function App() {
   const [excelFile, setExcelFile] = useState(null);
   const [excelData, setExcelData] = useState(null);
 
+  const [progValue, setProgValue] = useState(0);
+
   // first part
   const [strippedData, setStrippedData] = useState(null);
   const [errorData, setErrorData] = useState(null);
@@ -104,8 +106,20 @@ function App() {
   }
 
   const handleDownload = async (e) => {
-    alert("PIDORAS");
-
+    fetch("/get_lotting/")
+    .then(resp => resp.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = url;
+      // the filename you want
+      a.download = "result.xlsx";
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    })
+    .catch(() => alert("oh no!"));
     ///
   }
 
@@ -128,6 +142,8 @@ function App() {
         //                 "filename": excelFile.name, 
         await fetchLotting(e);
         await fetchMetrics(e);
+
+        setProgValue(1.0);
     }
     else {
         console.error("SUCK MY BALLS jnkjn");
@@ -148,6 +164,8 @@ function App() {
 
         await fetchClusterMap(e);
 
+        setProgValue(0.75);
+
         await handleLotting(e);
     }
     else {
@@ -166,9 +184,11 @@ function App() {
 
     if (request.ok) {
         console.log("clearData");
-
+        
         await fetchStrippedData(e);
         await fetchErrorData(e);
+
+        setProgValue(0.5);
 
         await performClusterize(e);
     }
@@ -192,6 +212,7 @@ function App() {
     if (response.ok) {
         console.log("File uploaded");
         console.log(excelFile.name);
+        setProgValue(0.25);
         await clearData(e);
     }
     else {
@@ -218,11 +239,12 @@ function App() {
             <input type="file" onChange={handleFileForm} />
             <button type="submit" className='header-btn'  >Загрузить</button>
             <p className="details"> в формате .xlsx, .csv</p>
+            <progress value={progValue}/>
 
-            <label>Максимальный размер кластера</label>
-            <imput type="number"/>
         </form>
+
       </div> 
+      
 
       {/* <Look_on_data/> */}
       <div className='lookdata'>
@@ -346,7 +368,6 @@ function App() {
 
       {/* <Downloader/> */}
       <div className='download'>
-          <p>Looking for shit?</p>
           <h1> Ваше <span> лотирование </span> готово</h1>
           <button href='#' onClick={handleDownload} className='download-btn'>Скачать</button>
           <p className="details"> в формате .xlsx</p>
