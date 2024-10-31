@@ -27,6 +27,13 @@
     overflow: auto;
 }
 
+.class-model iframe{
+    height: 70vh;
+    width: 80%;
+    margin: 2rem auto;
+}
+
+
 body{
     margin:0px;
     padding: 0px;
