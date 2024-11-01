@@ -248,7 +248,8 @@ function App() {
       </div> 
     
       <div>
-            <input className="input"  value={radius} type="number" onChange={e => {setRadius(e.target.value); }} />
+            <p>Размер кластера: </p>
+            <input className="input" value={radius} type="number" onChange={e => {setRadius(e.target.value); }} />
         </div>
 
       {/* <Look_on_data/> */}
