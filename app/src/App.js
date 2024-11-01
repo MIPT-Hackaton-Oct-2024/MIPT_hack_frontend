@@ -213,6 +213,7 @@ function App() {
 
     if (response.ok) {
         console.log("File uploaded");
+        console.log(radius);
         console.log(excelFile.name);
         setProgValue(0.25);
         await clearData(e);
@@ -244,13 +245,11 @@ function App() {
             <progress className="progress" value={progValue}/>
         </form>
 
-
-        <div>
-          <input className="input"  value={radius} type="number" onChange={e => {setRadius(e.target.value); }} />
-        </div>
-
       </div> 
-      
+    
+      <div>
+            <input className="input"  value={radius} type="number" onChange={e => {setRadius(e.target.value); }} />
+        </div>
 
       {/* <Look_on_data/> */}
       <div className='lookdata'>

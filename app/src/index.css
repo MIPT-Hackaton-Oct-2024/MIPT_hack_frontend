@@ -146,8 +146,8 @@ nav .menu-btn,
 }
 
 .input {
-    margin-top: 25rem;
-    background-color: #04afda;
+    margin-bottom: 6rem;
+    background-color: rgb(0,121,194);
 }
 
 .header-btn{
@@ -174,7 +174,7 @@ nav .menu-btn,
     justify-content: center;
     align-items: center;
     overflow: auto;
-    font-size: small;
+    font-size: x-small;
     max-height: 30rem;
   }
 
