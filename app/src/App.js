@@ -30,6 +30,8 @@ function App() {
   const [clustData, setClustData] = useState(null);
   const [rawHTML, setRawHTML] = useState(null);
 
+  const [radius, setRadius] = useState("150");
+
   // third part 
   const [lottingData, setLottingData] = useState(null);
   const [metricsData, setMetricsData] = useState(null);
@@ -156,7 +158,7 @@ function App() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({"max_cluster_size": 150, "linkage": "average"})
+        body: JSON.stringify({"max_cluster_size": radius, "linkage": "average"})
     });
 
     if (request.ok) {
@@ -239,9 +241,13 @@ function App() {
             <input type="file" onChange={handleFileForm} />
             <button type="submit" className='header-btn'  >Загрузить</button>
             <p className="details"> в формате .xlsx, .csv</p>
-            <progress value={progValue}/>
-
+            <progress className="progress" value={progValue}/>
         </form>
+
+
+        <div>
+          <input className="input"  value={radius} type="number" onChange={e => {setRadius(e.target.value); }} />
+        </div>
 
       </div> 
       

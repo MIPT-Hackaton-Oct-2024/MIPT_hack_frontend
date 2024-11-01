@@ -140,6 +140,16 @@ nav .menu-btn,
     color: rgb(0,121,194); font-weight: 500;
 }
 
+.intro progress {
+    margin-bottom: 5rem;
+    transform: translate(0%,160%);
+}
+
+.input {
+    margin-top: 25rem;
+    background-color: #04afda;
+}
+
 .header-btn{
 	width:500px;
 	height: 100px;
